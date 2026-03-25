@@ -36,7 +36,7 @@ flowchart LR
 
     %% ---------------- MODEL ----------------
     subgraph C[Model]
-        C1[Neural Network\n(Temperature Predictor)]
+        C1[Neural Network\n - Temperature Predictor]
     end
 
     %% ---------------- PHYSICS ----------------
@@ -47,14 +47,14 @@ flowchart LR
 
     %% ---------------- LOSS ----------------
     subgraph E[Loss Function]
-        E1[Data Loss (MSE)]
-        E2[Physics Loss (PDE Residual)]
+        E1[Data Loss - MSE]
+        E2[Physics Loss - PDE Residual]
         E3[Total Loss]
     end
 
     %% ---------------- TRAINING ----------------
     subgraph F[Training]
-        F1[Optimizer (Adam/LBFGS)]
+        F1[Optimizer - Adam/LBFGS]
         F2[Backpropagation]
         F3[Weight Update]
     end
