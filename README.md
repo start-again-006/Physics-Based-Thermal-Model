@@ -17,6 +17,76 @@ The model integrates neural networks with explicit physics constraints, enabling
 
 ## Model Architecture
 
+```mermaid
+flowchart LR
+
+    %% ---------------- DATA ----------------
+    subgraph A[Data Layer]
+        A1[Experimental Data]
+        A2[Simulation Data]
+        A3[Boundary & Initial Conditions]
+    end
+
+    %% ---------------- PREPROCESSING ----------------
+    subgraph B[Preprocessing]
+        B1[Data Cleaning]
+        B2[Normalization]
+        B3[Feature Engineering]
+    end
+
+    %% ---------------- MODEL ----------------
+    subgraph C[Model]
+        C1[Neural Network\n(Temperature Predictor)]
+    end
+
+    %% ---------------- PHYSICS ----------------
+    subgraph D[Physics Engine]
+        D1[Heat Transfer PDE]
+        D2[Boundary Constraints]
+    end
+
+    %% ---------------- LOSS ----------------
+    subgraph E[Loss Function]
+        E1[Data Loss (MSE)]
+        E2[Physics Loss (PDE Residual)]
+        E3[Total Loss]
+    end
+
+    %% ---------------- TRAINING ----------------
+    subgraph F[Training]
+        F1[Optimizer (Adam/LBFGS)]
+        F2[Backpropagation]
+        F3[Weight Update]
+    end
+
+    %% ---------------- OUTPUT ----------------
+    subgraph G[Output]
+        G1[Model Evaluation]
+        G2[Temperature Distribution]
+        G3[Thermal Predictions]
+    end
+
+    %% FLOW CONNECTIONS
+    A1 --> B
+    A2 --> B
+    A3 --> B
+
+    B --> C1
+    B --> D
+
+    C1 --> E1
+    D --> E2
+
+    E1 --> E3
+    E2 --> E3
+
+    E3 --> F1
+    F1 --> F2 --> F3
+
+    F3 --> G1
+    G1 --> G2 --> G3
+```
+
 ### PhysRegMLP (Physics-Regularized MLP)
 
 The core model is implemented using **PyTorch Lightning** and consists of:
